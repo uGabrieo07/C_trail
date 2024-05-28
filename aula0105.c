@@ -1,27 +1,4 @@
-head	1.1;
-access;
-symbols;
-locks
-	gabriel.depaula:1.1; strict;
-comment	@ * @;
 
-
-1.1
-date	2024.04.21.23.19.31;	author gabriel.depaula;	state Exp;
-branches;
-next	;
-
-
-desc
-@@
-
-
-1.1
-log
-@Initial revision
-@
-text
-@
 /*******************************************************************************
  *
  * Universidade Federal do Rio de Janeiro
@@ -32,9 +9,12 @@ text
  *
  * Descricao:
  *
- * $Author$
- * $Date$
- * $Log$
+ * $Author: gabriel.depaula $
+ * $Date: 2024/04/21 23:19:31 $
+ * $Log: aula0105.c,v $
+ * Revision 1.1  2024/04/21 23:19:31  gabriel.depaula
+ * Initial revision
+ *
  *
  *******************************************************************************/
 
@@ -139,5 +119,4 @@ return 0;
 }
 
 
-/* $RCSfile$ */
-@
+/* $RCSfile: aula0105.c,v $ */

@@ -1,28 +1,4 @@
-head	1.1;
-access;
-symbols;
-locks
-	gabriel.depaula:1.1; strict;
-comment	@ * @;
 
-
-1.1
-date	2024.04.20.05.32.57;	author gabriel.depaula;	state Exp;
-branches;
-next	;
-
-
-desc
-@arquivo de testes para a funcao ExibirHifens
-@
-
-
-1.1
-log
-@Initial revision
-@
-text
-@
 /*******************************************************************************
  *
  * Universidade Federal do Rio de Janeiro
@@ -34,8 +10,11 @@ text
  * Descricao:
  *
  * $Author: gabriel.depaula $
- * $Date: 2024/04/20 02:26:16 $
- * $Log: aula0102.c,v $
+ * $Date: 2024/04/20 05:32:57 $
+ * $Log: aula0103.c,v $
+ * Revision 1.1  2024/04/20 05:32:57  gabriel.depaula
+ * Initial revision
+ *
  * Revision 1.3  2024/04/20 02:26:16  gabriel.depaula
  * *** empty log message ***
  *
@@ -121,5 +100,4 @@ main (int argc, char *argv [])
 	return SUCESSO;
 }
 
-/* $RCSfile: aula0102.c,v $ */
-@
+/* $RCSfile: aula0103.c,v $ */

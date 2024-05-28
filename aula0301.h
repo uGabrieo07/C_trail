@@ -1,27 +1,4 @@
-head	1.1;
-access;
-symbols;
-locks
-	gabriel.depaula:1.1; strict;
-comment	@ * @;
 
-
-1.1
-date	2024.05.13.03.45.53;	author gabriel.depaula;	state Exp;
-branches;
-next	;
-
-
-desc
-@@
-
-
-1.1
-log
-@Initial revision
-@
-text
-@
 /*******************************************************************************
  *
  * Universidade Federal do Rio de Janeiro
@@ -32,9 +9,12 @@ text
  *
  * Descricao:
  *
- * $Author$
- * $Date$
- * $Log$
+ * $Author: gabriel.depaula $
+ * $Date: 2024/05/13 03:45:53 $
+ * $Log: aula0301.h,v $
+ * Revision 1.1  2024/05/13 03:45:53  gabriel.depaula
+ * Initial revision
+ *
  *
  *******************************************************************************/
 
@@ -47,7 +27,7 @@ text
 #endif
 
 #ifndef AULA0301
-#define AULA0301 "@@(#)aula0301.h $Revision$"
+#define AULA0301 "@(#)aula0301.h $Revision: 1.1 $"
  
 typedef unsigned long long ull;
 typedef unsigned short us;
@@ -67,5 +47,4 @@ CalcularTermoSerieFibonacci (us);
 
 
 
-/* $RCSfile$ */
-@
+/* $RCSfile: aula0301.h,v $ */

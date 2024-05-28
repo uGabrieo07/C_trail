@@ -1,32 +1,4 @@
-head	1.2;
-access;
-symbols;
-locks
-	gabriel.depaula:1.2; strict;
-comment	@ * @;
-
-
-1.2
-date	2024.05.04.19.19.35;	author gabriel.depaula;	state Exp;
-branches;
-next	1.1;
-
-1.1
-date	2024.05.04.02.38.41;	author gabriel.depaula;	state Exp;
-branches;
-next	;
-
-
-desc
-@@
-
-
-1.2
-log
-@corrigidos alguns erros
-@
-text
-@/*******************************************************************************
+/*******************************************************************************
  *
  * Universidade Federal do Rio de Janeiro
  * Escola Politecnica
@@ -37,8 +9,11 @@ text
  * Descricao:
  *
  * $Author: gabriel.depaula $
- * $Date: 2024/05/04 02:38:41 $
+ * $Date: 2024/05/04 19:19:35 $
  * $Log: aula0201b.c,v $
+ * Revision 1.2  2024/05/04 19:19:35  gabriel.depaula
+ * corrigidos alguns erros
+ *
  * Revision 1.1  2024/05/04 02:38:41  gabriel.depaula
  * Initial revision
  *
@@ -93,22 +68,3 @@ do{
 
 
 /* $RCSfile: aula0201b.c,v $ */
-@
-
-
-1.1
-log
-@Initial revision
-@
-text
-@d12 5
-a16 2
- * $Date: 2024/05/04 01:59:30 $
- * $Log: aula0201a.c,v $
-d49 1
-a49 1
-	} while (restoDaDivisao != 0)
-d67 1
-a67 1
-/* $RCSfile: aula0201a.c,v $ */
-@

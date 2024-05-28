@@ -1,27 +1,4 @@
-head	1.1;
-access;
-symbols;
-locks
-	gabriel.depaula:1.1; strict;
-comment	@ * @;
 
-
-1.1
-date	2024.04.20.21.55.36;	author gabriel.depaula;	state Exp;
-branches;
-next	;
-
-
-desc
-@@
-
-
-1.1
-log
-@Initial revision
-@
-text
-@
 /*******************************************************************************
  *
  * Universidade Federal do Rio de Janeiro
@@ -33,8 +10,11 @@ text
  * Descricao:
  *
  * $Author: gabriel.depaula $
- * $Date: 2024/04/20 07:40:10 $
+ * $Date: 2024/04/20 21:55:36 $
  * $Log: aula0104.c,v $
+ * Revision 1.1  2024/04/20 21:55:36  gabriel.depaula
+ * Initial revision
+ *
  * Revision 1.1  2024/04/20 07:40:10  gabriel.depaula
  * Initial revision
  *
@@ -68,4 +48,3 @@ main() { /*Funcao que imprime as 256 cores atreladas aos seus respectivos numero
 }
  
 /* $RCSfile: aula0104.c,v $ */
-@

@@ -1,32 +1,4 @@
-head	1.2;
-access;
-symbols;
-locks
-	gabriel.depaula:1.2; strict;
-comment	@ * @;
-
-
-1.2
-date	2024.05.04.19.30.12;	author gabriel.depaula;	state Exp;
-branches;
-next	1.1;
-
-1.1
-date	2024.05.04.02.57.04;	author gabriel.depaula;	state Exp;
-branches;
-next	;
-
-
-desc
-@@
-
-
-1.2
-log
-@corrigidos erros
-@
-text
-@/*******************************************************************************
+/*******************************************************************************
  *
  * Universidade Federal do Rio de Janeiro
  * Escola Politecnica
@@ -37,10 +9,10 @@ text
  * Descricao:
  *
  * $Author: gabriel.depaula $
- * $Date: 2024/05/04 02:57:04 $
- * $Log: aula0201d.c,v $
- * Revision 1.1  2024/05/04 02:57:04  gabriel.depaula
- * Initial revision
+ * $Date: 2024/05/04 19:29:54 $
+ * $Log: aula0201c.c,v $
+ * Revision 1.2  2024/05/04 19:29:54  gabriel.depaula
+ * corrigidos erros
  *
  * Revision 1.1  2024/05/04 02:52:39  gabriel.depaula
  * Initial revision
@@ -76,7 +48,7 @@ if ((numeroX == 0) && (numeroY == 0))
 
 restoDaDivisao = numeroX % numeroY;
 
-while (restoDaDivisao != 0)
+for (restoDaDivisao = 0; restoDaDivisao != 0;)
 {
 	numeroX = numeroY;
 	numeroY = restoDaDivisao;
@@ -100,27 +72,4 @@ return numeroY;
 
 
 
-/* $RCSfile: aula0201d.c,v $ */
-@
-
-
-1.1
-log
-@Initial revision
-@
-text
-@d12 5
-a16 2
- * $Date: 2024/05/04 02:52:39 $
- * $Log: aula0201c.c,v $
-d54 2
-a55 2
-	numeroY = restoDaDivisao
-	restoDaDivisao = numeroX % numeroY
-d58 1
-a58 1
-return numeroY 
-d75 1
-a75 1
 /* $RCSfile: aula0201c.c,v $ */
-@

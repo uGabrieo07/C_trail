@@ -1,27 +1,4 @@
-head	1.1;
-access;
-symbols;
-locks
-	gabriel.depaula:1.1; strict;
-comment	@ * @;
 
-
-1.1
-date	2024.05.13.05.09.36;	author gabriel.depaula;	state Exp;
-branches;
-next	;
-
-
-desc
-@@
-
-
-1.1
-log
-@Initial revision
-@
-text
-@
 /*******************************************************************************
  *
  * Universidade Federal do Rio de Janeiro
@@ -32,11 +9,18 @@ text
  *
  * Descricao:
  *
- * $Author$
- * $Date$
- * $Log$
+ * $Author: gabriel.depaula $
+ * $Date: 2024/05/13 04:52:46 $
+ * $Log: aula0301c.c,v $
+ * Revision 1.1  2024/05/13 04:52:46  gabriel.depaula
+ * Initial revision
+ *
  *
  *******************************************************************************/
+
+
+
+
 
 #include <stdio.h>
 #include "aula0301.h"
@@ -46,18 +30,17 @@ text
 ull 
 CalcularTermoSerieFibonacci (us termo)
 {
-	ull somaDosAnteriores, numeroAuxiliar1 = 0, numeroAuxiliar2 = 1, limite = 1;	
+	ull somaDosAnteriores, numeroAuxiliar1 = 0, numeroAuxiliar2 = 1, limite;	
 
 	if (termo <= 1){
 		return termo;
 	}
 
 	else{
-		while(limite < termo){
+		for (limite = 1; limite < termo; ++limite){
 			somaDosAnteriores = numeroAuxiliar1 + numeroAuxiliar2;
 			numeroAuxiliar1 = numeroAuxiliar2;
 			numeroAuxiliar2 = somaDosAnteriores;
-			++limite;
 		}
 
 	return numeroAuxiliar2;
@@ -65,5 +48,16 @@ CalcularTermoSerieFibonacci (us termo)
 }
 
 
-/* $RCSfile$ */
-@
+
+
+
+
+
+
+
+
+
+
+
+
+/* $RCSfile: aula0301c.c,v $ */

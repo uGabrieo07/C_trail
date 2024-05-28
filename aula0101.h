@@ -1,32 +1,4 @@
-head	1.2;
-access;
-symbols;
-locks
-	gabriel.depaula:1.2; strict;
-comment	@ * @;
 
-
-1.2
-date	2024.04.20.05.30.58;	author gabriel.depaula;	state Exp;
-branches;
-next	1.1;
-
-1.1
-date	2024.04.20.02.01.04;	author gabriel.depaula;	state Exp;
-branches;
-next	;
-
-
-desc
-@@
-
-
-1.2
-log
-@foi adicionado o prototipo da funcao ExibirHifens
-@
-text
-@
 /*******************************************************************************
  *
  * Universidade Federal do Rio de Janeiro
@@ -38,8 +10,11 @@ text
  * Descricao:
  *
  * $Author: gabriel.depaula $
- * $Date: 2024/04/20 02:01:04 $
+ * $Date: 2024/04/20 05:30:58 $
  * $Log: aula0101.h,v $
+ * Revision 1.2  2024/04/20 05:30:58  gabriel.depaula
+ * foi adicionado o prototipo da funcao ExibirHifens
+ *
  * Revision 1.1  2024/04/20 02:01:04  gabriel.depaula
  * Initial revision
  *
@@ -67,21 +42,3 @@ ExibirHifens (us);
 
 
 /* $RCSfile: aula0101.h,v $ */
-@
-
-
-1.1
-log
-@Initial revision
-@
-text
-@d12 6
-a17 3
- * $Author$
- * $Date$
- * $Log$
-d29 3
-d41 1
-a41 1
-/* $RCSfile$ */
-@

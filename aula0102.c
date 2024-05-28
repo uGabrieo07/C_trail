@@ -1,28 +1,4 @@
-head	1.1;
-access;
-symbols;
-locks
-	gabriel.depaula:1.1; strict;
-comment	@ * @;
 
-
-1.1
-date	2024.04.20.05.32.57;	author gabriel.depaula;	state Exp;
-branches;
-next	;
-
-
-desc
-@arquivo de testes para a funcao ExibirHifens
-@
-
-
-1.1
-log
-@Initial revision
-@
-text
-@
 /*******************************************************************************
  *
  * Universidade Federal do Rio de Janeiro
@@ -63,17 +39,17 @@ text
 #define TAMANHO_MAXIMO_LONG_UNSIGNED_EXCEDIDO			3
 #define TAMANHO_MAXIMO_UNSIGNED_SHORT_EXCEDIDO			4	
 #define ARGUMENTO_INVALIDO					5
-#define NUMERO_DE_HIFENS_VALIDO					6
-#define NUMERO_DE_HIFENS_INVALIDO				7
+#define NUMERO_DE_COLUNAS_VALIDO				6
+#define NUMERO_DE_COLUNAS_INVALIDO				7
 #define END_OF_STRING					      '\0'
 
 int
 main (int argc, char *argv []) 
 {
-	us  numeroDeHifensUs;
-	ul  numeroDeHifensUl; 
+	us  numeroDeColunasUs;
+	ul  numeroDeColunasUl; 
 	char *validacao;
-	numeroDeHifensUl = strtoul (argv [1], &validacao, 10);
+	numeroDeColunasUl = strtoul (argv [1], &validacao, 10);
 	
 	if (argc != NUMERO_ARGUMENTOS_VALIDO)
 	{
@@ -94,7 +70,7 @@ main (int argc, char *argv [])
 		exit (TAMANHO_MAXIMO_LONG_UNSIGNED_EXCEDIDO);
 	}
 
-	if (numeroDeHifensUl > USHRT_MAX)
+	if (numeroDeColunasUl > USHRT_MAX)
 	{
 		printf ("%s\nValor maximo do tipo short unsigned (%u) foi excedido.\n\n%s", RED, UINT_MAX, RESET);
 		exit (TAMANHO_MAXIMO_UNSIGNED_SHORT_EXCEDIDO);
@@ -106,20 +82,19 @@ main (int argc, char *argv [])
 		exit (ARGUMENTO_INVALIDO);
 	}
 	
-	if ((1 <= numeroDeHifensUl) && (numeroDeHifensUl <= 500)){
-		numeroDeHifensUs = (us) numeroDeHifensUl;
-		ExibirHifens (numeroDeHifensUs);
+	if ((1 <= numeroDeColunasUl) && (numeroDeColunasUl <= 500)){
+		numeroDeColunasUs = (us) numeroDeColunasUl;
+		ExibirCabecalho (numeroDeColunasUs);
 		exit (SUCESSO);
 		
 	}
 
-	if (!((1 <= numeroDeHifensUl) && (numeroDeHifensUl <= 500))){
-		printf ("%sO numero de hifens deve estar entre 1 e 500.%s", RED, RESET);
-		exit (NUMERO_DE_HIFENS_INVALIDO);
+	if (!((1 <= numeroDeColunasUl) && (numeroDeColunasUl <= 500))){
+		printf ("%sO numero de colunas deve estar entre 1 e 500.%s", RED, RESET);
+		exit (NUMERO_DE_COLUNAS_INVALIDO);
 	}
 
 	return SUCESSO;
 }
 
 /* $RCSfile: aula0102.c,v $ */
-@

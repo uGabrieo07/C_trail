@@ -1,27 +1,4 @@
-head	1.1;
-access;
-symbols;
-locks
-	gabriel.depaula:1.1; strict;
-comment	@ * @;
 
-
-1.1
-date	2024.05.13.05.09.36;	author gabriel.depaula;	state Exp;
-branches;
-next	;
-
-
-desc
-@@
-
-
-1.1
-log
-@Initial revision
-@
-text
-@
 /*******************************************************************************
  *
  * Universidade Federal do Rio de Janeiro
@@ -32,9 +9,12 @@ text
  *
  * Descricao:
  *
- * $Author$
- * $Date$
- * $Log$
+ * $Author: gabriel.depaula $
+ * $Date: 2024/05/13 05:09:36 $
+ * $Log: aula0301d.c,v $
+ * Revision 1.1  2024/05/13 05:09:36  gabriel.depaula
+ * Initial revision
+ *
  *
  *******************************************************************************/
 
@@ -65,5 +45,4 @@ CalcularTermoSerieFibonacci (us termo)
 }
 
 
-/* $RCSfile$ */
-@
+/* $RCSfile: aula0301d.c,v $ */
