@@ -1,0 +1,143 @@
+head	1.2;
+access;
+symbols;
+locks
+	gabriel.depaula:1.2; strict;
+comment	@ * @;
+
+
+1.2
+date	2024.05.27.17.21.12;	author gabriel.depaula;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2024.05.27.06.37.26;	author gabriel.depaula;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@;
+@
+text
+@
+/*******************************************************************************
+ *
+ * Universidade Federal do Rio de Janeiro
+ * Escola Politecnica
+ * Departamento de Eletronica e de Computacao
+ * Prof. Marcelo Luiz Drumond Lanza
+ * EEL270 - Computacao II - Turma 2024/1
+ *
+ * Descricao:
+ *:q
+ * $Author: gabriel.depaula $
+ * $Date: 2024/05/27 06:37:26 $
+ * $Log: aula0403b.c,v $
+ * Revision 1.1  2024/05/27 06:37:26  gabriel.depaula
+ * Initial revision
+ *
+ *
+ *******************************************************************************/
+
+
+
+
+
+#include <stdio.h>
+#include "aula0401.h"
+#include "cores.h"
+
+float
+CalcularSerieHarmonicaAlternada (usi termo)
+{
+	float soma;
+	usi numeroAuxiliar = 1;
+	long double numerador;
+	long double denominador;
+
+	if (termo == 0){
+		
+		return 0;
+	
+	}
+
+	else{
+
+		do{
+			numerador = CalcularExponencial (-1, numeroAuxiliar + 1);
+			denominador = CalcularExponencial (numeroAuxiliar, numeroAuxiliar);
+			printf ("\nnumerador: %Lf\n", numerador);
+			printf ("\ndenominador: %Lf\n", denominador);
+			soma += numerador / denominador;
+			++numeroAuxiliar;
+
+		} while (numeroAuxiliar <= termo);
+	}
+	
+	return soma;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* $RCSfile: aula0403b.c,v $ */
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d12 6
+a17 3
+ * $Author$
+ * $Date$
+ * $Log$
+a25 1
+#include <math.h>
+d33 1
+a35 2
+	int i = 1;
+	int iIncrementado;
+d46 2
+a47 4
+			iIncrementado = i+1;
+			printf ("auxiliar incrementado: %d", iIncrementado);
+			numerador = CalcularExponencial (-1, iIncrementado);
+			denominador = CalcularExponencial (i, i);
+d49 1
+a49 1
+			printf ("denominador: %Lf\n", denominador);
+d51 1
+a51 1
+			++i;
+d53 1
+a53 1
+		} while (i <= termo);
+d77 1
+a77 1
+/* $RCSfile$ */
+@

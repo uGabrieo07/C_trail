@@ -1,0 +1,119 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@ * @;
+
+
+1.2
+date	2024.05.27.18.09.55;	author gabriel.depaula;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2024.05.26.02.43.44;	author gabriel.depaula;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@
+/*******************************************************************************
+ *
+ * Universidade Federal do Rio de Janeiro
+ * Escola Politecnica
+ * Departamento de Eletronica e de Computacao
+ * Prof. Marcelo Luiz Drumond Lanza
+ * EEL270 - Computacao II - Turma 2024/1
+ *
+ * Descricao:
+ *
+ * $Author: gabriel.depaula $
+ * $Date: 2024/05/26 02:43:44 $
+ * $Log: aula0401c.c,v $
+ * Revision 1.1  2024/05/26 02:43:44  gabriel.depaula
+ * Initial revision
+ *
+ *
+ *******************************************************************************/
+
+#include <limits.h>
+#include <math.h>
+#include "aula0401.h"
+
+ld
+CalcularExponencial (double base, int expoente)
+{
+	ld resultado = 1;
+	int numeroAuxiliar;
+
+	if (base == 0 && expoente == 0){
+		return 1;
+	}
+
+	if (base != 0 && expoente == 0){
+		return 1;
+	}
+
+	if (base == 0 && expoente < 0){
+		return HUGE_VAL;
+	}
+
+	
+	if (base != 0 && expoente < 0){
+
+		for (numeroAuxiliar = 0; numeroAuxiliar < -1 * expoente; ++numeroAuxiliar){
+				
+			resultado *= 1 / base;
+	
+		}	
+	}
+
+
+	if (base != 0 && expoente > 0){
+
+		for (numeroAuxiliar = 0; numeroAuxiliar < expoente; ++numeroAuxiliar){
+				
+			resultado *= base;
+	
+		}	
+	}
+	
+	return resultado;
+
+}
+
+
+/* $RCSfile: aula0401c.c,v $ */
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d12 6
+a17 3
+ * $Author$
+ * $Date$
+ * $Log$
+d29 1
+d43 10
+a52 1
+	if (base != 0 && expoente != 0){
+d54 1
+a54 1
+		int numeroAuxiliar;
+d68 1
+a68 1
+/* $RCSfile$ */
+@

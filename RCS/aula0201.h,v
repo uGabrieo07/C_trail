@@ -1,0 +1,66 @@
+head	1.1;
+access;
+symbols;
+locks
+	gabriel.depaula:1.1; strict;
+comment	@ * @;
+
+
+1.1
+date	2024.05.04.01.59.21;	author gabriel.depaula;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@
+/*******************************************************************************
+ *
+ * Universidade Federal do Rio de Janeiro
+ * Escola Politecnica
+ * Departamento de Eletronica e de Computacao
+ * Prof. Marcelo Luiz Drumond Lanza
+ * EEL270 - Computacao II - Turma 2024/1
+ *
+ * Descricao:
+ *
+ * $Author$
+ * $Date$
+ * $Log$
+ *
+ *******************************************************************************/
+
+#ifndef AULA0201
+#define AULA0201 "@@(#)aula0201.h$Revision$"
+
+typedef unsigned long long ull;
+
+ull
+CalculaMaximoDivisorComum (ull,ull);
+#endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* $RCSfile$ */
+@

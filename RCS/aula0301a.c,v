@@ -1,0 +1,82 @@
+head	1.1;
+access;
+symbols;
+locks
+	gabriel.depaula:1.1; strict;
+comment	@ * @;
+
+
+1.1
+date	2024.05.13.03.46.05;	author gabriel.depaula;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@
+/*******************************************************************************
+ *
+ * Universidade Federal do Rio de Janeiro
+ * Escola Politecnica
+ * Departamento de Eletronica e de Computacao
+ * Prof. Marcelo Luiz Drumond Lanza
+ * EEL270 - Computacao II - Turma 2024/1
+ *
+ * Descricao:
+ *
+ * $Author$
+ * $Date$
+ * $Log$
+ *
+ *******************************************************************************/
+
+#include <stdio.h>
+#include "aula0301.h"
+#include "cores.h"
+
+
+ull CalcularTermoSerieFibonacci (us termo)
+{
+	ull valorDoTermo;
+
+	if (termo <=1){
+		valorDoTermo = termo;
+	}
+
+	else{
+		valorDoTermo = CalcularTermoSerieFibonacci (termo - 1) + CalcularTermoSerieFibonacci (termo - 2);	
+	}
+
+	return valorDoTermo;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* $RCSfile$ */
+@

@@ -1,0 +1,680 @@
+head	1.13;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.13
+date	2024.05.27.18.37.36;	author gabriel.depaula;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2024.05.27.06.37.58;	author gabriel.depaula;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2024.05.26.02.43.04;	author gabriel.depaula;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2024.05.13.05.28.17;	author gabriel.depaula;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2024.05.05.02.48.49;	author gabriel.depaula;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2024.05.04.19.54.59;	author gabriel.depaula;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2024.05.04.01.57.54;	author gabriel.depaula;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2024.04.22.06.57.34;	author gabriel.depaula;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2024.04.22.04.28.59;	author gabriel.depaula;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2024.04.21.23.23.13;	author gabriel.depaula;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2024.04.20.21.58.12;	author gabriel.depaula;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2024.04.20.07.38.18;	author gabriel.depaula;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2024.04.20.05.35.42;	author gabriel.depaula;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.13
+log
+@*** empty log message ***
+@
+text
+@# Universidade Federal do Rio de Janeiro
+# Escola Politecnica
+# Departamento de Eletronica e Computacao
+# Prof. Marcelo Luiz Drummond Lanza
+# EEL270 - Computacao II - 2024/1
+#
+# Descricao:
+#
+# $Author: gabriel.depaula $
+# $Dates$
+# $Log: BSDmakefile,v $
+# Revision 1.12  2024/05/27 06:37:58  gabriel.depaula
+# *** empty log message ***
+#
+# Revision 1.11  2024/05/26 02:43:04  gabriel.depaula
+# add rotulos, metodos e macros relacionados a aula04
+#
+# Revision 1.10  2024/05/13 05:28:17  gabriel.depaula
+# foram adicionados as macros, rotulos e metedos referentes a aula03
+#
+# Revision 1.9  2024/05/05 02:48:49  gabriel.depaula
+# foram adicionados os metodos para criar todas as bibliotecas de uma vez, além da corre�cao de alguns erros
+#
+# Revision 1.8  2024/05/04 19:54:59  gabriel.depaula
+# foram adicionadas todas as macros e rotulos referentes a aula02
+#
+# Revision 1.7  2024/05/04 01:57:54  gabriel.depaula
+# foi adicionada a macro AULA02 contendo o executavel aula0201a, assim como os rrotulos aula02 e aula0201a
+#
+# Revision 1.6  2024/04/22 06:57:34  gabriel.depaula
+# adicionada a macro da aqula0107 assim como seu rotulo
+#
+# Revision 1.5  2024/04/22 04:28:59  gabriel.depaula
+# adicionada a macro para aula0106 e seu rotulo
+#
+# Revision 1.4  2024/04/21 23:23:13  gabriel.depaula
+# foi adicionada a macro AULA0105OBJS referente ao arquivo objeto da aula0105.c, além do seu referido rotulo
+#
+# Revision 1.3  2024/04/20 21:58:12  gabriel.depaula
+# foi adicionado o arquivo objeto da funcao cabecalho na macro AULA0104
+#
+# Revision 1.2  2024/04/20 07:38:18  gabriel.depaula
+# adcionadas as macros e roulos da aula0104.
+#
+# Revision 1.1  2024/04/20 05:35:42  gabriel.depaula
+# Initial revision
+#
+# Revision 1.2  2024/04/20 03:10:19  gabriel.depaula
+# *** empty log message ***
+#
+# Revision 1.1  2024/04/20 01:51:45  gabriel.depaula
+# Initial revision
+#
+
+
+
+# macro do sistema operacional
+OS = 'uname -s'
+
+# macro referente ao compilador de C 
+CC = gcc
+
+.ifdef CLANG
+CC = clang
+.endif
+
+# macro que armazena o valor do compilador de C
+LD = $(CC)
+
+
+# dialeto selecionado e dialeto padrao
+DIALECT = ansi
+STANDARD = -ansi
+
+# alteracao do dialeto no comando make
+.ifdef C89
+DIALECT = c89
+STANDARD = -std=c89
+.elif C90
+DIALECt = c90
+STANDARD = -std=c90
+.elif C99
+DIALECT = c99
+STANDARD = -std=c99
+.elif C11
+DIALECT = c11
+STANDARD = -std=c11
+.endif
+
+#
+DEBUG =
+
+.ifdef DEPURACAO
+DEBUG = -DDPURACAO
+.endif
+
+CFLAGS = -Wall $(STANDARD) $(DEBUG)
+LFLAGS = -Wall
+
+# macro correspondente ao executavel aula0102
+AULA01 = aula0102 aula0103 aula0104 aula0105 aula0106 aula0107
+
+AULA02 = aula0202a aula0202b\
+				 aula0202c aula0202d
+
+AULA03 = aula0302a aula0302b\
+				 aula0302c aula0302d
+
+AULA04 = aula0402a aula0402b\
+				 aula0402c aula0402d\
+				 aula0404a aula0404b\
+				 aula0404c aula0404d
+
+LIBMATEMATICADOWHILE = libmatematica-dowhile.a
+
+LIBMATEMATICARECURSAO = libmatematica-recursao.a
+
+LIBMATEMATICAFOR = libmatematica-for.a
+
+LIBMATEMATICAWHILE = libmatematica-while.a
+
+# macro dos arquivos objeto "aula0101.o" e "aula0102.o"
+AULA0102OBJS = aula0101.o aula0102.o
+
+AULA0103OBJS = aula0101.o aula0103.o
+
+AULA0104OBJS = aula0101.o aula0104.o
+
+AULA0105OBJS = aula0101.o aula0105.o
+
+AULA0106OBJS = aula0101.o aula0106.o
+
+AULA0107OBJS = aula0101.o aula0107.o
+
+AULA0202AOBJS = aula0201a.o aula0202.o
+
+AULA0202BOBJS = aula0201b.o aula0202.o
+
+AULA0202COBJS = aula0201c.o aula0202.o
+
+AULA0202DOBJS = aula0201d.o aula0202.o
+
+AULA0302AOBJS = aula0301a.o aula0302.o
+
+AULA0302BOBJS = aula0301b.o aula0302.o
+
+AULA0302COBJS = aula0301c.o aula0302.o
+
+AULA0302DOBJS = aula0301d.o aula0302.o
+
+AULA0402AOBJS = aula0401a.o aula0402.o
+
+AULA0402BOBJS = aula0401b.o aula0402.o
+
+AULA0402COBJS = aula0401c.o aula0402.o
+
+AULA0402DOBJS = aula0401d.o aula0402.o
+
+AULA0404AOBJS = aula0403a.o aula0404.o
+
+AULA0404BOBJS = aula0403b.o aula0404.o
+
+AULA0404COBJS = aula0403c.o aula0404.o
+
+AULA0404DOBJS = aula0403d.o aula0404.o
+
+AULA0404EOBJS = aula0403e.o aula0404.o
+
+LIBMATEMATICARECURSAOOBJS = aula0201a.o aula0301a.o aula0401a.o aula0403a.o
+
+LIBMATEMATICADOWHILEOBJS = aula0201b.o aula0301b.o aula0401b.o aula0403b.o
+
+LIBMATEMATICAFOROBJS = aula0201c.o aula0301c.o aula0401c.o aula0403c.o
+
+LIBMATEMATICAWHILEOBJS = aula0201d.o aula0301d.o aula0401d.o aula0403d.o
+
+# macro que contem o valor de AULA01
+EXECS = $(AULA01) $(AULA02) $(AULA03) $(AULA04)
+
+
+# macro vazia para as bibliotecas
+LIBS = $(LIBMATEMATICARECURSAO) $(LIBMATEMATICADOWHILE) $(LIBMATEMATICAFOR) $(LIBMATEMATICAWHILE)
+
+libs: $(LIBS)
+
+# macro referente aos executaveis e as bibliotecas
+ALL = $(EXECS) $(LIBS)
+
+# regra especifica para a compilacao de arquivos
+.c.o:
+	$(CC) $(CFLAGS) -c $<
+
+# rotulo dos executaveis
+aula01: $(AULA01)
+aula02: $(AULA02)
+aula03: $(AULA03)
+aula04: $(AULA04)
+# rotulo dos executaveis e da biblioteca
+all: $(ALL)
+
+# rotulo dos executaveis sem a biblioteca
+execs: $(EXECS)
+
+# cria os executaveis refrentes ao rotulo aula02
+aula0102: $(AULA0102OBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0102OBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+aula0103: $(AULA0103OBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0103OBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+aula0104: $(AULA0104OBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0104OBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+aula0105: $(AULA0105OBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0105OBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+aula0106: $(AULA0106OBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0106OBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+aula0107: $(AULA0107OBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0107OBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0202a: $(AULA0202AOBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0202AOBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0202b: $(AULA0202BOBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0202BOBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0202c: $(AULA0202COBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0202COBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0202d: $(AULA0202DOBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0202DOBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0302a: $(AULA0302AOBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0302AOBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0302b: $(AULA0302BOBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0302BOBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0302c: $(AULA0302COBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0302COBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+aula0302d: $(AULA0302DOBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0302DOBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0402a: $(AULA0402AOBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0402AOBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0402b: $(AULA0402BOBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0402BOBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0402c: $(AULA0402COBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0402COBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+aula0402d: $(AULA0402DOBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0402DOBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+
+
+aula0404a: $(AULA0404AOBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0404AOBJS) -lm -L. -lmatematica-recursao 
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0404b: $(AULA0404BOBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0404BOBJS) -lm -L. -lmatematica-dowhile
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0404c: $(AULA0404COBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0404COBJS) -lm -L. -lmatematica-for
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+
+
+aula0404d: $(AULA0404DOBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0404DOBJS) -lm -L. -lmatematica-while
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0404e: $(AULA0404EOBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0404EOBJS) -lm
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
+libmatematica-recursao.a: $(LIBMATEMATICARECURSAOOBJS)
+	ar -r -c $@@ $(LIBMATEMATICARECURSAOOBJS)
+
+
+libmatematica-dowhile.a: $(LIBMATEMATICADOWHILEOBJS)
+	ar -r -c $@@ $(LIBMATEMATICADOWHILEOBJS)
+
+
+libmatematica-for.a: $(LIBMATEMATICAFOROBJS)
+	ar -r -c $@@ $(LIBMATEMATICAFOROBJS)
+
+
+libmatematica-while.a: $(LIBMATEMATICAWHILEOBJS)
+	ar -r -c $@@ $(LIBMATEMATICAWHILEOBJS)
+
+
+# executa um dos rotulos abaixo caso necessario
+.PHONY: clean-all clean clean-objs clean-bsd clean-linux clean-gcc clean-clang clean-ansi clean-c89 clean-c90 clean-c99 clean-c11
+
+clean-all:
+	rm -f *.o $(ALL) *.core *-FreeBSD-* *-Linux-*
+clean:
+	rm -f *.o $(ALL) *.core
+clean-objs:	
+	rm -f *.o *.core
+clean-bsd:
+	rm -f *.o $(ALL) *-FreeBSD-* *.core
+clean-linux:
+	rm -f *.o $(ALL) *-Linux-* *.core
+clean-gcc:
+	rm -f *.o $(ALL) *-gcc-* *.core
+clean-clang:
+	rm -f *.o $(ALL) *-clang-* *.core
+clean-ansi:
+	rm -f *.o $(ALL) *-ansi-* *.core
+clean-c89:
+	rm -f *.o $(ALL) *-c89-* *.core
+clean-c90:
+	rm -f *.o $(ALL) *-c90-* *.core
+clean-c99:
+	rm -f *.o $(ALL) *-c99-* *.core
+clean-c11:
+	rm -f *.o $(ALL) *-c11-* *.core
+# $RCSFile$
+
+@
+
+
+1.12
+log
+@*** empty log message ***
+@
+text
+@d12 3
+d167 2
+d307 4
+@
+
+
+1.11
+log
+@add rotulos, metodos e macros relacionados a aula04
+@
+text
+@d12 3
+d107 3
+a109 1
+				 aula0402c aula0402d
+d156 9
+a164 1
+LIBMATEMATICARECURSAOOBJS = aula0201a.o aula0301a.o aula0401a.o
+d166 1
+a166 1
+LIBMATEMATICADOWHILEOBJS = aula0201b.o aula0301b.o aula0401b.o
+d168 1
+a168 1
+LIBMATEMATICAFOROBJS = aula0201c.o aula0301c.o aula0401c.o
+d170 1
+a170 1
+LIBMATEMATICAWHILEOBJS = aula0201d.o aula0301d.o aula0401d.o
+d279 23
+@
+
+
+1.10
+log
+@foram adicionados as macros, rotulos e metedos referentes a aula03
+@
+text
+@d12 3
+d103 3
+d143 7
+a149 1
+LIBMATEMATICARECURSAOOBJS = aula0201a.o aula0301a.o 
+d151 1
+a151 1
+LIBMATEMATICADOWHILEOBJS = aula0201b.o aula0301b.o
+d153 1
+a153 1
+LIBMATEMATICAFOROBJS = aula0201c.o aula0301c.o
+d155 3
+a157 1
+LIBMATEMATICAWHILEOBJS = aula0201d.o aula0301d.o
+d160 1
+a160 1
+EXECS = $(AULA01) $(AULA02) $(AULA03)
+d179 1
+d247 19
+@
+
+
+1.9
+log
+@foram adicionados os metodos para criar todas as bibliotecas de uma vez, além da corre�cao de alguns erros
+@
+text
+@d12 3
+d97 3
+d129 7
+a135 1
+LIBMATEMATICARECURSAOOBJS = aula0201a.o  
+d137 1
+a137 1
+LIBMATEMATICADOWHILEOBJS = aula0201b.o
+d139 1
+a139 1
+LIBMATEMATICAFOROBJS = aula0201c.o
+d141 3
+a143 1
+LIBMATEMATICAWHILEOBJS = aula0201d.o
+d146 1
+a146 1
+EXECS = $(AULA01) $(AULA02)
+d164 1
+a164 1
+
+d213 19
+@
+
+
+1.8
+log
+@foram adicionadas todas as macros e rotulos referentes a aula02
+@
+text
+@d12 3
+d91 6
+a96 2
+AULA02 = aula0201a aula0102b\
+				 aula0201c aula0201d
+d98 1
+a98 1
+LIBMATEMATICADOWHILE = libmatematicadowhile.a
+d100 1
+a100 1
+LIBMATEMATICARECURSAO = libmatematicarecursao.a
+d136 1
+a136 1
+LIBS = $(LIBMATEMATICARECURSAO) $(LIBMATEMATICADOWHILE) $(LIBMATEMATICAFOR) $(LIBMATMATICAWHILE)
+d199 1
+a199 1
+libmatematicarecursao.a: $(LIBMATEMATICARECURSAOOBJS)
+d203 1
+a203 1
+libmatematicadowhile.a: $(LIBMATEMATICADOWHILEOBJS)
+d207 1
+a207 1
+libmatematicafor.a: $(LIBMATEMATICAFOROBJS)
+d211 1
+a211 1
+libmatematicawhile.a: $(LIBMATEMATICAWHILEOBJS)
+@
+
+
+1.7
+log
+@foi adicionada a macro AULA02 contendo o executavel aula0201a, assim como os rrotulos aula02 e aula0201a
+@
+text
+@d12 3
+d88 7
+a94 1
+AULA02 = aula0201a
+d110 14
+d129 1
+a129 1
+LIBS =
+d173 1
+a173 1
+aula0201a: $(AULA0202AOBJS)
+d178 16
+d196 2
+d200 2
+d204 2
+@
+
+
+1.6
+log
+@adicionada a macro da aqula0107 assim como seu rotulo
+@
+text
+@d12 3
+d83 1
+a83 1
+AULA01 = aula0102 aula0103 aula0104
+d85 1
+d97 1
+d99 1
+a99 1
+AULA0107OBJS = aula0101.o aula0107.o
+d102 1
+a102 1
+EXECS = $(AULA01)
+d119 1
+a119 1
+
+a126 3
+aula0101: $(AULA0101OBJS)
+	$(LD) $(LFLAGS) -o $@@ $(AULA0101OBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+d150 12
+@
+
+
+1.5
+log
+@adicionada a macro para aula0106 e seu rotulo
+@
+text
+@d12 3
+d92 4
+d143 6
+@
+
+
+1.4
+log
+@foi adicionada a macro AULA0105OBJS referente ao arquivo objeto da aula0105.c, além do seu referido rotulo
+@
+text
+@d12 3
+d88 1
+a88 1
+
+d115 3
+d132 4
+@
+
+
+1.3
+log
+@foi adicionado o arquivo objeto da funcao cabecalho na macro AULA0104
+@
+text
+@d12 3
+d83 1
+d122 3
+@
+
+
+1.2
+log
+@adcionadas as macros e roulos da aula0104.
+@
+text
+@d12 3
+d78 1
+a78 1
+AULA0104OBJS = aula0104.o
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d11 4
+a14 1
+# $Log: BSDMakefile,v $
+d68 1
+a68 1
+AULA01 = aula0102 aula0103
+d75 4
+d98 1
+d112 3
+@

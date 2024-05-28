@@ -1,0 +1,80 @@
+head	1.1;
+access;
+symbols;
+locks
+	gabriel.depaula:1.1; strict;
+comment	@ * @;
+
+
+1.1
+date	2024.05.27.17.21.12;	author gabriel.depaula;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@
+/*******************************************************************************
+ *
+ * Universidade Federal do Rio de Janeiro
+ * Escola Politecnica
+ * Departamento de Eletronica e de Computacao
+ * Prof. Marcelo Luiz Drumond Lanza
+ * EEL270 - Computacao II - Turma 2024/1
+ *
+ * Descricao:
+ *
+ * $Author$
+ * $Date$
+ * $Log$
+ *
+ *******************************************************************************/
+
+
+
+
+#include <stdio.h>
+#include "aula0401.h"
+#include "cores.h"
+
+float
+CalcularSerieHarmonicaAlternada (usi termo)
+{
+	float soma;
+	usi numeroAuxiliar = 1;
+	long double numerador;
+	long double denominador;
+
+	if (termo == 0){
+		
+		return 0;
+	
+	}
+
+	else{
+		while ( numeroAuxiliar <= termo){
+			
+			numerador = CalcularExponencial (-1, numeroAuxiliar + 1);
+			denominador = CalcularExponencial (numeroAuxiliar, numeroAuxiliar);
+			soma += numerador / denominador;
+			++numeroAuxiliar;
+
+		}
+	}
+	
+	return soma;
+}
+
+
+
+
+/* $RCSfile$ */
+@

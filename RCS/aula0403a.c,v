@@ -1,0 +1,120 @@
+head	1.2;
+access;
+symbols;
+locks
+	gabriel.depaula:1.2; strict;
+comment	@ * @;
+
+
+1.2
+date	2024.05.27.17.21.12;	author gabriel.depaula;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2024.05.27.06.37.08;	author gabriel.depaula;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@;
+@
+text
+@
+/*******************************************************************************
+ *
+ * Universidade Federal do Rio de Janeiro
+ * Escola Politecnica
+ * Departamento de Eletronica e de Computacao
+ * Prof. Marcelo Luiz Drumond Lanza
+ * EEL270 - Computacao II - Turma 2024/1
+ *
+ * Descricao:
+ *:q
+ * $Author: gabriel.depaula $
+ * $Date: 2024/05/27 06:37:08 $
+ * $Log: aula0403a.c,v $
+ * Revision 1.1  2024/05/27 06:37:08  gabriel.depaula
+ * Initial revision
+ *
+ *
+ *******************************************************************************/
+
+
+
+
+
+#include <stdio.h>
+#include "aula0401.h"
+#include "cores.h"
+
+float
+CalcularSerieHarmonicaAlternada (usi termo)
+{
+	float valorDoUltimoTermo;
+
+	if (termo == 0){
+		
+		return 0;
+	
+	}
+	
+	else{
+
+		valorDoUltimoTermo = 1 / CalcularExponencial(termo,termo);
+
+		if (termo % 2 == 0){
+			return CalcularSerieHarmonicaAlternada (termo - 1) - valorDoUltimoTermo;
+		}
+		
+		else{
+
+			return CalcularSerieHarmonicaAlternada (termo - 1) + valorDoUltimoTermo;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* $RCSfile: aula0403a.c,v $ */
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d12 6
+a17 3
+ * $Author$
+ * $Date$
+ * $Log$
+a25 1
+#include <math.h>
+d73 1
+a73 1
+/* $RCSfile$ */
+@

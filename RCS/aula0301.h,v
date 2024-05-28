@@ -1,0 +1,70 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2024.05.13.03.45.53;	author gabriel.depaula;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@
+/*******************************************************************************
+ *
+ * Universidade Federal do Rio de Janeiro
+ * Escola Politecnica
+ * Departamento de Eletronica e de Computacao
+ * Prof. Marcelo Luiz Drumond Lanza
+ * EEL270 - Computacao II - Turma 2024/1
+ *
+ * Descricao:
+ *
+ * $Author$
+ * $Date$
+ * $Log$
+ *
+ *******************************************************************************/
+
+#if defined (__FreeBSD__) && defined (__STRICT_ANSI__)
+#define __LONG_LONG_SUPPORTED
+#endif
+
+#ifdef __linux__
+#define _XOPEN_SOURCE 600
+#endif
+
+#ifndef AULA0301
+#define AULA0301 "@@(#)aula0301.h $Revision$"
+ 
+typedef unsigned long long ull;
+typedef unsigned short us;
+
+ull
+CalcularTermoSerieFibonacci (us);
+#endif 
+
+
+
+
+
+
+
+
+
+
+
+
+/* $RCSfile$ */
+@
