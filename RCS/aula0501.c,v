@@ -1,0 +1,191 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2024.06.07.18.19.13;	author gabriel.depaula;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@
+/*******************************************************************************
+ *
+ * Universidade Federal do Rio de Janeiro
+ * Escola Politecnica
+ * Departamento de Eletronica e de Computacao
+ * Prof. Marcelo Luiz Drumond Lanza
+ * EEL270 - Computacao II - Turma 2024/1
+ *
+ * Descricao:
+ *
+ * $Author$
+ * $Date$
+ * $Log$
+ *
+ *******************************************************************************/
+
+
+
+#include <stdio.h>
+#include "aula0501.h"
+#include "cores.h"
+
+tiposErros
+ExibirMatriz (us numeroLinhas, us numeroColunas, ld matriz [numeroLinhas][numeroColunas])
+{
+	us linha, coluna;
+	
+	if (!matriz){
+		return matrizInvalida;	
+	}
+
+	printf ("\n\n");
+	for (linha = 0; linha < numeroLinhas; ++linha){
+		printf ("%s| %s", BOLD_GREEN, RESET);
+		
+		for (coluna = 0; coluna < numeroColunas; ++coluna){
+			if (coluna == numeroColunas - 1){
+				printf ("%.10Lf ", matriz [linha][coluna]);
+			}
+			else{
+				printf ("%.10Lf\t\t", matriz [linha][coluna]);
+			}
+		}
+		printf ("%s|%s\n", BOLD_GREEN, RESET);
+	}
+	printf ("\n\n");
+
+	return ok;
+}
+
+tiposErros
+MultiplicarMatrizes (us numeroLinhasA, us numeroColunasA, us numeroLinhasB, us numeroColunasB, ld matrizA [numeroLinhasA][numeroColunasA],ld matrizB [numeroLinhasB][numeroColunasB], ld matrizProduto [numeroLinhasA][numeroColunasB])
+{
+
+	us linha, coluna, numeroAuxiliar;
+	
+	if (numeroColunasA != numeroLinhasB){
+		return matrizInvalida;
+	}	
+
+	for (linha = 0; linha < numeroLinhasA; ++linha){
+		for (coluna = 0; coluna < numeroColunasB; ++coluna){
+			matrizProduto [linha][coluna] = 0;
+		}
+	}
+
+	for (linha = 0; linha < numeroLinhasA; ++linha){
+		for (coluna = 0; coluna < numeroColunasB; ++coluna){
+			for (numeroAuxiliar = 0; numeroAuxiliar < numeroColunasA; ++numeroAuxiliar){
+				matrizProduto [linha][coluna] += matrizA [linha][numeroAuxiliar] * matrizB [numeroAuxiliar][coluna];
+			}
+		}
+	
+	
+	}		
+	
+	return ok;
+}
+
+tiposErros
+ObterMatrizTransposta (us numeroLinhas, us numeroColunas, ld matrizOriginal [numeroLinhas][numeroColunas], ld matrizTransposta [numeroColunas][numeroLinhas])
+{
+	us linha, coluna;
+	
+	for (linha = 0; linha < numeroLinhas; ++linha){
+		for (coluna = 0; coluna < numeroColunas; ++coluna){
+			matrizTransposta [coluna][linha] = matrizOriginal [linha][coluna];
+		}
+	}
+
+	return ok;
+}
+
+tiposErros
+CalcularDeterminanteMatriz (us ordemMatriz, ld matriz [ordemMatriz][ordemMatriz], ld *determinante)
+{
+
+
+	if (ordemMatriz  == 1){
+		*determinante = matriz[0][0];
+	}
+
+	else if (ordemMatriz == 2){
+		*determinante = matriz[0][0] * matriz[1][1] - matriz[0][1] * matriz[1][0];
+	}
+
+	else if (ordemMatriz == 3){
+		*determinante =	matriz[0][0] * matriz[1][1] * matriz[2][2] + matriz[0][1] * matriz[1][2] * matriz[2][0] + matriz[0][2] * matriz[1][0] * matriz[2][1]
+                    - matriz[0][2] * matriz[1][1] * matriz[2][0] - matriz[0][1] * matriz[1][0] * matriz[2][2] 
+										- matriz[0][0] * matriz[1][2] * matriz[2][1];
+	}
+	
+	else{
+		us numeroAuxiliar;
+		*determinante = 0;
+		for (numeroAuxiliar = 0; numeroAuxiliar < ordemMatriz; ++numeroAuxiliar) {
+			ld complementoAlgebrico;
+			CalcularComplementoAlgebrico (ordemMatriz, 0, numeroAuxiliar, matriz, &complementoAlgebrico);
+			*determinante += matriz[0][numeroAuxiliar] * complementoAlgebrico;
+		}
+	}
+
+	return ok;
+}
+
+tiposErros
+CalcularMenorComplementar(us ordemMatriz, us linhaRemovida, us colunaRemovida, ld matriz [ordemMatriz][ordemMatriz], ld *valorMenorComplementar) 
+{
+    us linhaMenorC = 0, colunaMenorC = 0;
+		us linha, coluna;
+		ld menorComplementar [ordemMatriz - 1][ordemMatriz - 1];
+		
+    for (linha = 0; linha < ordemMatriz; ++linha) {
+        for (coluna = 0; coluna < ordemMatriz; ++coluna) {
+            if (linha != linhaRemovida && coluna != colunaRemovida) {
+                menorComplementar[linhaMenorC][colunaMenorC] = matriz[linha][coluna];
+                colunaMenorC++;
+                if (colunaMenorC == ordemMatriz - 1) {
+                    colunaMenorC = 0;
+                    ++linhaMenorC;
+                }
+            }
+        }
+    }
+		
+		CalcularDeterminanteMatriz (ordemMatriz - 1, menorComplementar, valorMenorComplementar); 
+
+	return ok;
+}
+
+tiposErros
+CalcularComplementoAlgebrico(us ordemMatriz,  us linhaRemovida, us colunaRemovida, ld matriz [ordemMatriz][ordemMatriz], ld *complementoAlgebrico) 
+{
+  ld valorMenorComplementar;
+  CalcularMenorComplementar (ordemMatriz, linhaRemovida, colunaRemovida, matriz, &valorMenorComplementar);
+  *complementoAlgebrico = ((linhaRemovida + colunaRemovida) % 2 == 0 ? 1 : -1) * valorMenorComplementar;
+
+	return ok;
+}
+
+
+
+
+
+
+
+/* $RCSfile$ */
+@

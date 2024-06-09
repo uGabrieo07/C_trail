@@ -1,0 +1,139 @@
+
+/*******************************************************************************
+ *
+ * Universidade Federal do Rio de Janeiro
+ * Escola Politecnica
+ * Departamento de Eletronica e de Computacao
+ * Prof. Marcelo Luiz Drumond Lanza
+ * EEL270 - Computacao II - Turma 2024/1
+ *
+ * Descricao:
+ *
+ * $Author: gabriel.depaula $
+ * $Date: 2024/06/07 18:19:13 $
+ * $Log: aula0507.c,v $
+ * Revision 1.1  2024/06/07 18:19:13  gabriel.depaula
+ * Initial revision
+ *
+ *
+ *******************************************************************************/
+
+#define _XOPEN_SOURCE 1000
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+#include <errno.h>
+#include <float.h>
+#include "cores.h"
+#include "aula0501.h"
+
+#define NUMERO_ARGUMENTOS																					4 + (NUMERO_MAXIMO_LINHAS * NUMERO_MAXIMO_COLUNAS)	
+#define SUCESSO																										0
+#define NUMERO_ARGUMENTOS_INVALIDO																1
+#define ARGUMENTO_INVALIDO_NA_MATRIZ															3
+#define ARGUMENTO_INVALIDO_NAS_DIMENSOES													4
+#define BASE_INVALIDA																							5	
+#define TAMANHO_MAXIMO_ARGUMENTO_EXCEDIDO													6
+#define DIMENSAO_INVALIDA																					7
+#define MATRIZ_INVALIDA																						8
+#define NUMERO_NEGATIVO																						9
+#define LINHA_COLUNA_INVALIDA																			10
+#define END_OF_STRING																							'\0'
+
+int
+main (int argc, char *argv []) 
+{
+	us ordemMatriz;
+	us linha;
+	us linhaRemovida;
+	us colunaRemovida;
+	us coluna;
+	char *verificacaoMatriz;
+	char *verificacaoOrdem;
+	char *verificacaoColunaRemovida;
+	char *verificacaoLinhaRemovida;
+	ld complementoAlgebrico;
+
+	if (argc > NUMERO_ARGUMENTOS)
+	{
+		printf ("%s\nUso: %s <numero_de_linhas> <numero_de_colunas> a11 ... a1%hu ... a%hu1 ... a%hu%hu%s\n",
+			RED,
+			argv [0],
+			NUMERO_MAXIMO_COLUNAS,
+			NUMERO_MAXIMO_LINHAS,
+			NUMERO_MAXIMO_LINHAS,
+			NUMERO_MAXIMO_COLUNAS,
+			RESET);
+		exit (NUMERO_ARGUMENTOS_INVALIDO);
+	}
+	
+	if (argv[1][0] == '-'){
+		printf ("\n%sO numero de linhas e colunas da matriz nao podem ser negativos.%s\n\n", RED, RESET);
+		exit (NUMERO_NEGATIVO);
+	}
+	
+	ordemMatriz = (us) strtoul (argv [1], &verificacaoOrdem, 10);	
+	linhaRemovida = (us) strtoul (argv [2], &verificacaoLinhaRemovida, 10);
+	colunaRemovida = (us) strtoul (argv [3], &verificacaoColunaRemovida, 10);
+
+
+	if (*verificacaoOrdem != END_OF_STRING){
+		printf ("%s\nO numero de colunas ou o numero de linhas contem argumento invalido (diferente de unsigned short).%s\n", RED, RESET);
+		exit (ARGUMENTO_INVALIDO_NAS_DIMENSOES);
+	}
+
+
+	if (*verificacaoLinhaRemovida != END_OF_STRING || *verificacaoColunaRemovida != END_OF_STRING){
+		printf ("%s\nA coluna ou/e linha a ser removida para o calculo do menor complementar e invalida.%s\n", RED, RESET);
+		exit (LINHA_COLUNA_INVALIDA);
+	}
+
+	
+	if (ordemMatriz > NUMERO_MAXIMO_LINHAS){
+		printf ("%s\nO numero de linhas e o numero de colunas devem ser, NO MAXIMO, igual a 100.%s\n", RED, RESET);
+		exit (DIMENSAO_INVALIDA);
+	}
+		
+	if (argc - 4 > ordemMatriz * ordemMatriz){
+		printf ("\n%sA dimensao (%hu X %hu) da matriz nao coincide com o numero de argumentos inseridos(%d)%s\n\n", RED, ordemMatriz, ordemMatriz, argc - 3, RESET);
+		exit (MATRIZ_INVALIDA);
+	}		  				
+
+	ld matriz [ordemMatriz][ordemMatriz];
+	us index = 4;
+
+	for (linha = 0; linha < ordemMatriz; ++linha){
+		for (coluna = 0; coluna < ordemMatriz; ++coluna){
+			matriz [linha][coluna] = strtold (argv [index], &verificacaoMatriz); 
+			++index;
+			if (*verificacaoMatriz != END_OF_STRING)
+			{
+				printf ("%s\nA matriz original contem um argumento invalido: \'%c\'\n%s\n", RED, *verificacaoMatriz, RESET);
+				exit (ARGUMENTO_INVALIDO_NA_MATRIZ);
+			}
+		}
+	}
+
+	if (errno == EINVAL){
+		printf ("%s\nBase invalida.%s", RED, RESET);
+		exit (BASE_INVALIDA);
+	}
+
+	if (errno == ERANGE)
+	{
+		printf ("%s\nValor maximo do tipo long double(%Lf) ou unsigned short(%hu) foram excedidos.\n\n%s", RED, LDBL_MAX, USHRT_MAX, RESET);
+		exit (TAMANHO_MAXIMO_ARGUMENTO_EXCEDIDO);
+	}
+
+	ExibirMatriz (ordemMatriz, ordemMatriz, matriz);
+	CalcularComplementoAlgebrico (ordemMatriz, linhaRemovida, colunaRemovida, matriz, &complementoAlgebrico);
+	printf ("Complemento algebrico (%hu, %hu) da matriz: %Lf\n\n", linhaRemovida, colunaRemovida, complementoAlgebrico); 
+
+	return SUCESSO;
+}
+
+
+
+
+
+/* $RCSfile: aula0507.c,v $ */

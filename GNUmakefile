@@ -9,6 +9,12 @@
 # $Author: gabriel.depaula $
 # $Dates$
 # $Log: GNUmakefile,v $
+# Revision 1.14  2024/06/07 18:54:32  gabriel.depaula
+# corrigidos erros que nao permitiam a correta geraçcao das aulas
+#
+# Revision 1.13  2024/06/07 18:19:13  gabriel.depaula
+# *** empty log message ***
+#
 # Revision 1.12  2024/05/27 18:37:36  gabriel.depaula
 # *** empty log message ***
 #
@@ -81,12 +87,18 @@ STANDARD = -ansi
 ifeq ($(dialeto),c89)
 DIALECT = c89
 STANDARD = -std=c89
+endif
+
 ifeq ($(dialeto),c90)
 DIALECt = c90
 STANDARD = -std=c90
+endif
+
 ifeq ($(dialeto),c99)
 DIALECT = c99
 STANDARD = -std=c99
+endif
+
 ifeq ($(dialeto),c11)
 DIALECT = c11
 STANDARD = -std=c11
@@ -107,6 +119,10 @@ AULA04 = aula0402a aula0402b\
 				 aula0404c aula0404d\
 				 aula0404e
 
+AULA05 = aula0502 aula0503\
+				 aula0504 aula0505\
+				 aula0506 aula0507
+
 LIBMATEMATICARECURSAO = libmatematica-recursao.a
 
 LIBMATEMATICADOWHILE = libmatematica-dowhile.a
@@ -114,6 +130,8 @@ LIBMATEMATICADOWHILE = libmatematica-dowhile.a
 LIBMATEMATICAFOR = libmatematica-for.a
 
 LIBMATEMATICAWHILE = libmatematica-while.a
+
+LIBMATEMATICA = libmatematica.a
 
 # macro dos arquivos objeto "aula0101.o" e "aula0102.o"
 AULA0102OBJS = aula0101.o aula0102.o
@@ -163,6 +181,20 @@ AULA0404DOBJS = aula0403d.o aula0404.o
 
 AULA0404EOBJS = aula0403e.o aula0404.o
 
+AULA0502OBJS = aula0501.o aula0502.o
+
+AULA0503OBJS = aula0501.o aula0503.o
+
+AULA0504OBJS = aula0501.o aula0504.o
+
+AULA0505OBJS = aula0501.o aula0505.o
+
+AULA0506OBJS = aula0501.o aula0506.o
+
+AULA0506OBJS = aula0501.o aula0506.o
+
+AULA0507OBJS = aula0501.o aula0507.o
+
 LIBMATEMATICARECURSAOOBJS = aula0201a.o aula0301a.o aula0401a.o aula0403a.o
 
 LIBMATEMATICADOWHILEOBJS = aula0201b.o aula0301b.o aula0401b.o aula0403b.o
@@ -171,24 +203,21 @@ LIBMATEMATICAFOROBJS = aula0201c.o aula0301c.o aula0401c.o aula0403c.o
 
 LIBMATEMATICAWHILEOBJS = aula0201d.o aula0301d.o aula0401d.o aula0403d.o
 
+LIBMATEMATICA = aula0501.o
 
-EXECS = $(AULA01) $(AULA02) $(AULA03) $(AULA04)
+# macro referente ao conteudo da macro AULA01, que deve armazenar um executavel
+EXECS = $(AULA01) $(AULA02) $(AULA03) $(AULA04) $(AULA05)
 
 
 # macro vazio para DEBUG
 DEBUG = 
 
-ifeq DEPURACAO
+ifeq ($(debug), DEPURACAO)
 DEBUG = -DDEPURACAO
 endif
 
-
-
-# macro referente ao conteudo da macro AULA01, que deve armazenar um executavel
-EXECS = $(AULA01) $(AULA02) $(AULA03) $(AULA04)
-
 # macro vazia para as bibliotecas
-LIBS = $(LIBMATEMATICARECURSAO) $(LIBMATEMATICADOWHILE) $(LIBMATEMATICAFOR) $(LIBMATEMATICWHILE)
+LIBS = $(LIBMATEMATICARECURSAO) $(LIBMATEMATICADOWHILE) $(LIBMATEMATICAFOR) $(LIBMATEMATICWHILE) $(LIBMATEMATICA)
 
 libs: $(LIBS)
 
@@ -204,6 +233,7 @@ aula01: $(AULA01)
 aula02: $(AULA02)
 aula03: $(AULA03)
 aula04: $(AULA04)
+aula05: $(AULA05)
 # rotulo dos executaveis e da biblioteca
 all: $(ALL)
 
@@ -212,108 +242,135 @@ execs: $(EXECS)
 
 # cria os executaveis refrentes ao rotulo aula02
 aula0102: $(AULA0102OBJS)
-	$(LD) $(LFLAGS) -o $@ $(CC)-$(AULA0102OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0102OBJS)
 	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 aula0103: $(AULA0103OBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0103OBJS
+	$(LD) $(CFLAGS) -o $@ $(AULA0103OBJS)
 	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 aula0104: $(AULA0104OBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0104OBJS)
+	$(LD) $(CFLAGS) -o $@ $(AULA0104OBJS)
 	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 aula0105: $(AULA0105OBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0105OBJS)
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0105OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 aula0106: $(AULA0106OBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0106OBJS)
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0106OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 
 aula0107: $(AULA0107OBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0107OBJS)
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0107OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 
 aula0202a: $(AULA0202AOBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0202AOBJS)
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0202AOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 
 aula0202b: $(AULA0202BOBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0202BOBJS)
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0202BOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 
 aula0202c: $(AULA0202COBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0202COBJS)
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0202COBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 
 
 aula0202d: $(AULA0202DOBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0202DOBJS)
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0202DOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 
 aula0302a: $(AULA0302AOBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0302AOBJS)
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0302AOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 
 aula0302b: $(AULA0302BOBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0302BOBJS)
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0302BOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 aula0302c: $(AULA0302COBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0302COBJS)
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0302COBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 
 aula0302d: $(AULA0302DOBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0302DOBJS)
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0302DOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 
 aula0402a: $(AULA0402AOBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0402AOBJS)
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0402AOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 
 aula0402b: $(AULA0402BOBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0402BOBJS)
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0402BOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 aula0402c: $(AULA0402COBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0402COBJS)
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0402COBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 aula0402d: $(AULA0402DOBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0402DOBJS)
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0402DOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 
 aula0404a: $(AULA0404AOBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0404AOBJS)
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT) -lm -L. -lmatematica-recursao
+	$(LD) $(CFLAGS) -o $@ $(AULA0404AOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT) -lm -L. -lmatematica-recursao
 
 
 aula0404b: $(AULA0404BOBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0404BOBJS) -lm -L. -lmatematica-dowhile
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0404BOBJS) -lm -L. -lmatematica-dowhile
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 aula0404c: $(AULA0404COBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0404COBJS) -lm -L. -lmatematica-for
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0404COBJS) -lm -L. -lmatematica-for
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 aula0404d: $(AULA0404DOBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0404DOBJS) -lm -L. -lmatematica-while
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0404DOBJS) -lm -L. -lmatematica-while
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 aula0404e: $(AULA0404EOBJS)
-	$(LD) $(CFLAGS) -o $@ $(CC)-$(AULA0404EOBJS) -lm
-	cp -f $@ $@-$(OS)-$9(CC)-$(DIALECT)
+	$(LD) $(CFLAGS) -o $@ $(AULA0404EOBJS) -lm
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0502: $(AULA0502OBJS)
+	$(LD) $(CFLAGS) -o $@ $(AULA0502OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0503: $(AULA0503OBJS)
+	$(LD) $(CFLAGS) -o $@ $(AULA0503OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0504: $(AULA0504OBJS)
+	$(LD) $(CFLAGS) -o $@ $(AULA0504OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0505: $(AULA0505OBJS)
+	$(LD) $(CFLAGS) -o $@ $(AULA0505OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0506: $(AULA0506OBJS)
+	$(LD) $(CFLAGS) -o $@ $(AULA0506OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0507: $(AULA0507OBJS)
+	$(LD) $(CFLAGS) -o $@ $(AULA0507OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 libmatematica-recursao.a: $(LIBMATEMATICARECURSAOOBJS)
 	ar -r -c $@ $(LIBMATEMATICARECURSAOOBJS)
@@ -327,6 +384,8 @@ libmatematica-for.a: $(LIBMATEMATICAFOROBJS)
 libmatematica-while.a: $(LIBMATEMATICAWHILEOBJS)
 	ar -r -c $@ $(LIBMATEMATICAWHILEOBJS)
 
+libmatematica.a : $(LIBMATEMATICAOBJS)
+	ar -r -c $@ $(LIBMATEMATICAOBJS)
 
 # executa um dos rotulos abaixo caso necessario
 .PHONY: clean-all clean clean-objs clean-bsd clean-linux clean-gcc clean-clang clean-ansi clean-c89 clean-c90 clean-c99 clean-c11

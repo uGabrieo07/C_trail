@@ -9,6 +9,9 @@
 # $Author: gabriel.depaula $
 # $Dates$
 # $Log: BSDmakefile,v $
+# Revision 1.14  2024/06/07 18:19:13  gabriel.depaula
+# *** empty log message ***
+#
 # Revision 1.13  2024/05/27 18:37:36  gabriel.depaula
 # *** empty log message ***
 #
@@ -114,6 +117,10 @@ AULA04 = aula0402a aula0402b\
 				 aula0404a aula0404b\
 				 aula0404c aula0404d
 
+AULA05 = aula0502 aula0503\
+				 aula0504 aula0505\
+				 aula0506 aula0507
+
 LIBMATEMATICADOWHILE = libmatematica-dowhile.a
 
 LIBMATEMATICARECURSAO = libmatematica-recursao.a
@@ -121,6 +128,8 @@ LIBMATEMATICARECURSAO = libmatematica-recursao.a
 LIBMATEMATICAFOR = libmatematica-for.a
 
 LIBMATEMATICAWHILE = libmatematica-while.a
+
+LIBMATEMATICA = libmatematica.a
 
 # macro dos arquivos objeto "aula0101.o" e "aula0102.o"
 AULA0102OBJS = aula0101.o aula0102.o
@@ -169,6 +178,18 @@ AULA0404DOBJS = aula0403d.o aula0404.o
 
 AULA0404EOBJS = aula0403e.o aula0404.o
 
+AULA0502OBJS = aula0501.o aula0502.o
+
+AULA0503OBJS = aula0501.o aula0503.o
+
+AULA0504OBJS = aula0501.o aula0504.o
+
+AULA0505OBJS = aula0501.o aula0505.o
+
+AULA0506OBJS = aula0501.o aula0506.o
+
+AULA0507OBJS = aula0501.o aula0507.o
+
 LIBMATEMATICARECURSAOOBJS = aula0201a.o aula0301a.o aula0401a.o aula0403a.o
 
 LIBMATEMATICADOWHILEOBJS = aula0201b.o aula0301b.o aula0401b.o aula0403b.o
@@ -177,12 +198,14 @@ LIBMATEMATICAFOROBJS = aula0201c.o aula0301c.o aula0401c.o aula0403c.o
 
 LIBMATEMATICAWHILEOBJS = aula0201d.o aula0301d.o aula0401d.o aula0403d.o
 
+LIBMATEMATICAOBJS = aula0501.o
+
 # macro que contem o valor de AULA01
-EXECS = $(AULA01) $(AULA02) $(AULA03) $(AULA04)
+EXECS = $(AULA01) $(AULA02) $(AULA03) $(AULA04) $(AULA05)
 
 
 # macro vazia para as bibliotecas
-LIBS = $(LIBMATEMATICARECURSAO) $(LIBMATEMATICADOWHILE) $(LIBMATEMATICAFOR) $(LIBMATEMATICAWHILE)
+LIBS = $(LIBMATEMATICARECURSAO) $(LIBMATEMATICADOWHILE) $(LIBMATEMATICAFOR) $(LIBMATEMATICAWHILE) $(LIBMATEMATICA)
 
 libs: $(LIBS)
 
@@ -198,6 +221,7 @@ aula01: $(AULA01)
 aula02: $(AULA02)
 aula03: $(AULA03)
 aula04: $(AULA04)
+aula05: $(AULA05)
 # rotulo dos executaveis e da biblioteca
 all: $(ALL)
 
@@ -311,6 +335,33 @@ aula0404e: $(AULA0404EOBJS)
 	$(LD) $(LFLAGS) -o $@ $(AULA0404EOBJS) -lm
 	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
+aula0502: $(AULA0502OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0502OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0503: $(AULA0503OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0503OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0504: $(AULA0504OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0504OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0505: $(AULA0505OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0505OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0506: $(AULA0506OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0506OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0507: $(AULA0507OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0507OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
 libmatematica-recursao.a: $(LIBMATEMATICARECURSAOOBJS)
 	ar -r -c $@ $(LIBMATEMATICARECURSAOOBJS)
 
@@ -326,6 +377,8 @@ libmatematica-for.a: $(LIBMATEMATICAFOROBJS)
 libmatematica-while.a: $(LIBMATEMATICAWHILEOBJS)
 	ar -r -c $@ $(LIBMATEMATICAWHILEOBJS)
 
+libmatematica.a: $(LIBMATEMATICAOBJS)
+	ar -r -c $@ $(LIMATEMATICAOBJS)
 
 # executa um dos rotulos abaixo caso necessario
 .PHONY: clean-all clean clean-objs clean-bsd clean-linux clean-gcc clean-clang clean-ansi clean-c89 clean-c90 clean-c99 clean-c11
