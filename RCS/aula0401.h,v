@@ -1,10 +1,14 @@
-head	1.1;
+head	1.2;
 access;
 symbols;
-locks
-	gabriel.depaula:1.1; strict;
+locks; strict;
 comment	@ * @;
 
+
+1.2
+date	2024.07.04.16.36.01;	author gabriel.depaula;	state Exp;
+branches;
+next	1.1;
 
 1.1
 date	2024.05.26.02.44.09;	author gabriel.depaula;	state Exp;
@@ -16,9 +20,9 @@ desc
 @@
 
 
-1.1
+1.2
 log
-@Initial revision
+@*** empty log message ***
 @
 text
 @
@@ -32,19 +36,26 @@ text
  *
  * Descricao:
  *
- * $Author$
- * $Date$
- * $Log$
+ * $Author: gabriel.depaula $
+ * $Date: 2024/05/26 02:44:09 $
+ * $Log: aula0401.h,v $
+ * Revision 1.1  2024/05/26 02:44:09  gabriel.depaula
+ * Initial revision
+ *
  *
  *******************************************************************************/
 
 #ifndef AULA0401
-#define AULA0401 "@@(#)aula0401.h $Revision$"
+#define AULA0401 "@@(#)aula0401.h $Revision: 1.1 $"
 
 typedef long double ld;
+typedef unsigned short int usi;
 
 ld
 CalcularExponencial (double, int);
+
+float
+CalcularSerieHarmonicaAlternada (usi);
 #endif
 
 
@@ -64,5 +75,26 @@ CalcularExponencial (double, int);
 
 
 
+/* $RCSfile: aula0401.h,v $ */
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d12 6
+a17 3
+ * $Author$
+ * $Date$
+ * $Log$
+d22 1
+a22 1
+#define AULA0401 "@@(#)aula0401.h $Revision$"
+d25 1
+d29 3
+d51 1
+a51 1
 /* $RCSfile$ */
 @

@@ -10,8 +10,11 @@
  * Descricao:
  *
  * $Author: gabriel.depaula $
- * $Date: 2024/04/21 23:19:31 $
+ * $Date: 2024/07/04 16:35:52 $
  * $Log: aula0105.c,v $
+ * Revision 1.2  2024/07/04 16:35:52  gabriel.depaula
+ * *** empty log message ***
+ *
  * Revision 1.1  2024/04/21 23:19:31  gabriel.depaula
  * Initial revision
  *
@@ -58,7 +61,6 @@ main (int argc, char *argv[]){
 	if (argc > 2){
 		int numeroDeArgumentos = argc - 1;
 
-		tamanhoDoNome = "";
 		tamanhoDoNome = numeroDeArgumentos + (numeroDeArgumentos - 1);
 
 		espacosInicio = (COLUNAS_TERMINAL - tamanhoDoNome) / 2;
@@ -75,7 +77,6 @@ main (int argc, char *argv[]){
 		if (tamanhoDoNome <= CARACTERES_MAXIMO){
 			int indexUltimoArgumento = numeroDeArgumentos;
 			for (numeroAuxiliar = 1; numeroAuxiliar <= numeroDeArgumentos; ++numeroAuxiliar){
-				int tamanhoDoArgumento = strlen (argv[numeroAuxiliar]);
 				if (numeroAuxiliar == 1){
 				
 					printf ("\e[4;38;5;196m\"%s \e[0m", argv[numeroAuxiliar]); 

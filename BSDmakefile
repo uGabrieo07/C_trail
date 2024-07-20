@@ -9,6 +9,12 @@
 # $Author: gabriel.depaula $
 # $Dates$
 # $Log: BSDmakefile,v $
+# Revision 1.16  2024/07/11 17:31:19  gabriel.depaula
+# *** empty log message ***
+#
+# Revision 1.15  2024/07/04 16:04:58  gabriel.depaula
+# ls
+#
 # Revision 1.14  2024/06/07 18:19:13  gabriel.depaula
 # *** empty log message ***
 #
@@ -121,6 +127,15 @@ AULA05 = aula0502 aula0503\
 				 aula0504 aula0505\
 				 aula0506 aula0507
 
+AULA06 = aula0602a aula0602b\
+				 aula0603a aula0603b\
+				 aula0605a aula0605b\
+				 aula0606a aula0606b
+
+AULA07 = aula0702 aula0703\
+				 aula0704 aula0705\
+				 aula0706
+
 LIBMATEMATICADOWHILE = libmatematica-dowhile.a
 
 LIBMATEMATICARECURSAO = libmatematica-recursao.a
@@ -130,6 +145,8 @@ LIBMATEMATICAFOR = libmatematica-for.a
 LIBMATEMATICAWHILE = libmatematica-while.a
 
 LIBMATEMATICA = libmatematica.a
+
+LIBMONITOR = libmonitor.a
 
 # macro dos arquivos objeto "aula0101.o" e "aula0102.o"
 AULA0102OBJS = aula0101.o aula0102.o
@@ -190,6 +207,32 @@ AULA0506OBJS = aula0501.o aula0506.o
 
 AULA0507OBJS = aula0501.o aula0507.o
 
+AULA0602AOBJS = aula0601.o aula0602a.o
+
+AULA0602BOBJS = aula0601.o aula0602b.o
+
+AULA0603AOBJS = aula0601.o aula0603a.o
+
+AULA0603BOBJS = aula0601.o aula0603b.o
+
+AULA0605AOBJS = aula0604.o aula0605a.o
+
+AULA0605BOBJS = aula0604.o aula0605b.o
+
+AULA0606AOBJS = aula0604.o aula0606a.o
+
+AULA0606BOBJS = aula0604.o aula0606b.o
+
+AULA0702OBJS = aula0701.o aula0702.o
+
+AULA0703OBJS = aula0701.o aula0703.o
+
+AULA0704OBJS = aula0701.o aula0704.o
+
+AULA0705OBJS = aula0701.o aula0705.o
+
+AULA0706OBJS = aula0701.o aula0706.o
+
 LIBMATEMATICARECURSAOOBJS = aula0201a.o aula0301a.o aula0401a.o aula0403a.o
 
 LIBMATEMATICADOWHILEOBJS = aula0201b.o aula0301b.o aula0401b.o aula0403b.o
@@ -200,14 +243,16 @@ LIBMATEMATICAWHILEOBJS = aula0201d.o aula0301d.o aula0401d.o aula0403d.o
 
 LIBMATEMATICAOBJS = aula0501.o
 
+LIBMONITOROBJS =  aula0701.o
+
+
 # macro que contem o valor de AULA01
-EXECS = $(AULA01) $(AULA02) $(AULA03) $(AULA04) $(AULA05)
+EXECS = $(AULA01) $(AULA02) $(AULA03) $(AULA04) $(AULA05) $(AULA07)
 
 
 # macro vazia para as bibliotecas
-LIBS = $(LIBMATEMATICARECURSAO) $(LIBMATEMATICADOWHILE) $(LIBMATEMATICAFOR) $(LIBMATEMATICAWHILE) $(LIBMATEMATICA)
+LIBS = $(LIBMATEMATICARECURSAO) $(LIBMATEMATICADOWHILE) $(LIBMATEMATICAFOR) $(LIBMATEMATICAWHILE) $(LIBMATEMATICA) $(LIBMONITOR)
 
-libs: $(LIBS)
 
 # macro referente aos executaveis e as bibliotecas
 ALL = $(EXECS) $(LIBS)
@@ -222,9 +267,13 @@ aula02: $(AULA02)
 aula03: $(AULA03)
 aula04: $(AULA04)
 aula05: $(AULA05)
+aula06: $(AULA06)
+aula07: $(AULA07)
+
 # rotulo dos executaveis e da biblioteca
 all: $(ALL)
 
+libs: $(LIBS)
 # rotulo dos executaveis sem a biblioteca
 execs: $(EXECS)
 
@@ -358,8 +407,44 @@ aula0506: $(AULA0506OBJS)
 	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 
+
 aula0507: $(AULA0507OBJS)
 	$(LD) $(LFLAGS) -o $@ $(AULA0507OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0602a: $(AULA0602AOBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0602AOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0602b: $(AULA0602BOBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0602BOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0603a: $(AULA0603AOBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0603AOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0702: $(AULA0702OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0702OBJS) -lm -L. -lmonitor
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0703: $(AULA0703OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0703OBJS) -lm -L. -lmonitor
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0704: $(AULA0704OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0704OBJS) -lm -L. -lmonitor
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0705: $(AULA0705OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0705OBJS) -lm -L. -lmonitor
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+
+aula0706: $(AULA0706OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0706OBJS) -lm -L. -lmonitor
 	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 libmatematica-recursao.a: $(LIBMATEMATICARECURSAOOBJS)
@@ -379,6 +464,9 @@ libmatematica-while.a: $(LIBMATEMATICAWHILEOBJS)
 
 libmatematica.a: $(LIBMATEMATICAOBJS)
 	ar -r -c $@ $(LIMATEMATICAOBJS)
+
+libmonitor.a: $(LIBMONITOROBJS)
+	ar -r -c $@ $(LIBMONITOROBJS)
 
 # executa um dos rotulos abaixo caso necessario
 .PHONY: clean-all clean clean-objs clean-bsd clean-linux clean-gcc clean-clang clean-ansi clean-c89 clean-c90 clean-c99 clean-c11

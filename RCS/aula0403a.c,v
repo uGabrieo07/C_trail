@@ -1,10 +1,15 @@
-head	1.2;
+head	1.3;
 access;
 symbols;
 locks
-	gabriel.depaula:1.2; strict;
+	gabriel.depaula:1.3; strict;
 comment	@ * @;
 
+
+1.3
+date	2024.07.04.16.16.08;	author gabriel.depaula;	state Exp;
+branches;
+next	1.2;
 
 1.2
 date	2024.05.27.17.21.12;	author gabriel.depaula;	state Exp;
@@ -21,9 +26,9 @@ desc
 @@
 
 
-1.2
+1.3
 log
-@;
+@*** empty log message ***
 @
 text
 @
@@ -38,8 +43,11 @@ text
  * Descricao:
  *:q
  * $Author: gabriel.depaula $
- * $Date: 2024/05/27 06:37:08 $
+ * $Date: 2024/05/27 17:21:12 $
  * $Log: aula0403a.c,v $
+ * Revision 1.2  2024/05/27 17:21:12  gabriel.depaula
+ * ;
+ *
  * Revision 1.1  2024/05/27 06:37:08  gabriel.depaula
  * Initial revision
  *
@@ -55,7 +63,7 @@ text
 #include "cores.h"
 
 float
-CalcularSerieHarmonicaAlternada (usi termo)
+CalcularSerieHarmonicaAlternada (us termo)
 {
 	float valorDoUltimoTermo;
 
@@ -99,6 +107,21 @@ CalcularSerieHarmonicaAlternada (usi termo)
 
 
 /* $RCSfile: aula0403a.c,v $ */
+@
+
+
+1.2
+log
+@;
+@
+text
+@d13 1
+a13 1
+ * $Date: 2024/05/27 06:37:08 $
+d15 3
+d33 1
+a33 1
+CalcularSerieHarmonicaAlternada (usi termo)
 @
 
 

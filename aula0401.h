@@ -10,8 +10,11 @@
  * Descricao:
  *
  * $Author: gabriel.depaula $
- * $Date: 2024/05/26 02:44:09 $
+ * $Date: 2024/07/04 16:36:01 $
  * $Log: aula0401.h,v $
+ * Revision 1.2  2024/07/04 16:36:01  gabriel.depaula
+ * *** empty log message ***
+ *
  * Revision 1.1  2024/05/26 02:44:09  gabriel.depaula
  * Initial revision
  *
@@ -19,7 +22,7 @@
  *******************************************************************************/
 
 #ifndef AULA0401
-#define AULA0401 "@(#)aula0401.h $Revision: 1.1 $"
+#define AULA0401 "@(#)aula0401.h $Revision: 1.2 $"
 
 typedef long double ld;
 typedef unsigned short int usi;

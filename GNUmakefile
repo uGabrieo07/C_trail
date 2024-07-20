@@ -123,6 +123,8 @@ AULA05 = aula0502 aula0503\
 				 aula0504 aula0505\
 				 aula0506 aula0507
 
+AULA07 = aula0702
+
 LIBMATEMATICARECURSAO = libmatematica-recursao.a
 
 LIBMATEMATICADOWHILE = libmatematica-dowhile.a
@@ -132,6 +134,8 @@ LIBMATEMATICAFOR = libmatematica-for.a
 LIBMATEMATICAWHILE = libmatematica-while.a
 
 LIBMATEMATICA = libmatematica.a
+
+LIBMONITOR = libmonitor.a
 
 # macro dos arquivos objeto "aula0101.o" e "aula0102.o"
 AULA0102OBJS = aula0101.o aula0102.o
@@ -195,6 +199,8 @@ AULA0506OBJS = aula0501.o aula0506.o
 
 AULA0507OBJS = aula0501.o aula0507.o
 
+AULA0702OBJS = aula0701.o aula0702.o
+
 LIBMATEMATICARECURSAOOBJS = aula0201a.o aula0301a.o aula0401a.o aula0403a.o
 
 LIBMATEMATICADOWHILEOBJS = aula0201b.o aula0301b.o aula0401b.o aula0403b.o
@@ -205,8 +211,10 @@ LIBMATEMATICAWHILEOBJS = aula0201d.o aula0301d.o aula0401d.o aula0403d.o
 
 LIBMATEMATICA = aula0501.o
 
+LIBMONITOROBJS = aula0701.o
+
 # macro referente ao conteudo da macro AULA01, que deve armazenar um executavel
-EXECS = $(AULA01) $(AULA02) $(AULA03) $(AULA04) $(AULA05)
+EXECS = $(AULA01) $(AULA02) $(AULA03) $(AULA04) $(AULA05) $(AULA07)
 
 
 # macro vazio para DEBUG
@@ -217,7 +225,7 @@ DEBUG = -DDEPURACAO
 endif
 
 # macro vazia para as bibliotecas
-LIBS = $(LIBMATEMATICARECURSAO) $(LIBMATEMATICADOWHILE) $(LIBMATEMATICAFOR) $(LIBMATEMATICWHILE) $(LIBMATEMATICA)
+LIBS = $(LIBMATEMATICARECURSAO) $(LIBMATEMATICADOWHILE) $(LIBMATEMATICAFOR) $(LIBMATEMATICWHILE) $(LIBMATEMATICA) $(LIBMONITOR)
 
 libs: $(LIBS)
 
@@ -234,6 +242,8 @@ aula02: $(AULA02)
 aula03: $(AULA03)
 aula04: $(AULA04)
 aula05: $(AULA05)
+aula07: $(AULA07)
+
 # rotulo dos executaveis e da biblioteca
 all: $(ALL)
 
@@ -372,6 +382,10 @@ aula0507: $(AULA0507OBJS)
 	$(LD) $(CFLAGS) -o $@ $(AULA0507OBJS)
 	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
+aula0702: $(AULA0702OBJS)
+	 $(LD) $(LFLAGS) -o $@ $(AULA0702OBJS) -lm -L. -lmonitor
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
 libmatematica-recursao.a: $(LIBMATEMATICARECURSAOOBJS)
 	ar -r -c $@ $(LIBMATEMATICARECURSAOOBJS)
 
@@ -386,6 +400,10 @@ libmatematica-while.a: $(LIBMATEMATICAWHILEOBJS)
 
 libmatematica.a : $(LIBMATEMATICAOBJS)
 	ar -r -c $@ $(LIBMATEMATICAOBJS)
+
+libmonitor.a: $(LIBMONITOROBJS)
+	ar -r -c $@ $(LIBMONITOROBJS)
+
 
 # executa um dos rotulos abaixo caso necessario
 .PHONY: clean-all clean clean-objs clean-bsd clean-linux clean-gcc clean-clang clean-ansi clean-c89 clean-c90 clean-c99 clean-c11

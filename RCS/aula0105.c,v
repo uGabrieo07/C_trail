@@ -1,10 +1,14 @@
-head	1.1;
+head	1.2;
 access;
 symbols;
-locks
-	gabriel.depaula:1.1; strict;
+locks; strict;
 comment	@ * @;
 
+
+1.2
+date	2024.07.04.16.35.52;	author gabriel.depaula;	state Exp;
+branches;
+next	1.1;
 
 1.1
 date	2024.04.21.23.19.31;	author gabriel.depaula;	state Exp;
@@ -16,9 +20,9 @@ desc
 @@
 
 
-1.1
+1.2
 log
-@Initial revision
+@*** empty log message ***
 @
 text
 @
@@ -32,9 +36,12 @@ text
  *
  * Descricao:
  *
- * $Author$
- * $Date$
- * $Log$
+ * $Author: gabriel.depaula $
+ * $Date: 2024/04/21 23:19:31 $
+ * $Log: aula0105.c,v $
+ * Revision 1.1  2024/04/21 23:19:31  gabriel.depaula
+ * Initial revision
+ *
  *
  *******************************************************************************/
 
@@ -78,7 +85,6 @@ main (int argc, char *argv[]){
 	if (argc > 2){
 		int numeroDeArgumentos = argc - 1;
 
-		tamanhoDoNome = "";
 		tamanhoDoNome = numeroDeArgumentos + (numeroDeArgumentos - 1);
 
 		espacosInicio = (COLUNAS_TERMINAL - tamanhoDoNome) / 2;
@@ -95,7 +101,6 @@ main (int argc, char *argv[]){
 		if (tamanhoDoNome <= CARACTERES_MAXIMO){
 			int indexUltimoArgumento = numeroDeArgumentos;
 			for (numeroAuxiliar = 1; numeroAuxiliar <= numeroDeArgumentos; ++numeroAuxiliar){
-				int tamanhoDoArgumento = strlen (argv[numeroAuxiliar]);
 				if (numeroAuxiliar == 1){
 				
 					printf ("\e[4;38;5;196m\"%s \e[0m", argv[numeroAuxiliar]); 
@@ -139,5 +144,25 @@ return 0;
 }
 
 
+/* $RCSfile: aula0105.c,v $ */
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d12 6
+a17 3
+ * $Author$
+ * $Date$
+ * $Log$
+a60 1
+		tamanhoDoNome = "";
+a76 1
+				int tamanhoDoArgumento = strlen (argv[numeroAuxiliar]);
+d120 1
+a120 1
 /* $RCSfile$ */
 @
