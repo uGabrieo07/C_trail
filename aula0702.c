@@ -21,7 +21,7 @@
 #endif
  
 #ifdef __linux__
-#define _XOPEN_SOURCE 500
+#define _XOPEN_SOURCE 600
 #endif
 
 
@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
     tipoPixel monitor[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS];
 
     if (argc != NUMERO_ARGUMENTOS) {
-        printf("Uso: %s <tempo-congelamento> <numero-linhas> <numero-colunas> <percentual-defeituosos> <percentual-apagados> <cor-fundo> <cor-aceso> <cor-apagado> <cor-defeituoso>\n", argv[0]);
+        printf("Uso: %s <tempo-congelamento> <numero-linhas> <numero-colunas> <percentual-defeituosos> <percentual-apagados> <cor-fundo> <cor-apagado> <cor-aceso> <cor-defeituoso>\n", argv[0]);
         exit(NUMERO_ARGUMENTOS_INVALIDO);
     }
 
@@ -89,8 +89,8 @@ int main(int argc, char *argv[]) {
     }
 
     corFundo = argv[6];
-    corAceso = argv[7];
-		corApagado = argv[8];
+    corAceso = argv[8];
+		corApagado = argv[7];
     corDefeituoso = argv[9];
 
     tipoErros resultado = GerarDistribuicaoInicial(monitor, numeroLinhas, numeroColunas, percentualDefeituosos, percentualApagados);

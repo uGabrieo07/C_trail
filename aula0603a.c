@@ -42,7 +42,6 @@ main (int argc, char *argv [])
     byte indice, indiceDigito = 0;
     byte digito;
     byte validacao;
-    char *verificacaoDigitos;
 
     if (argc != NUMERO_ARGUMENTOS)
     {

@@ -21,6 +21,11 @@
  *
  *******************************************************************************/
 
+#ifdef __linux__
+#define _XOPEN_SOURCE 600
+#endif
+
+
 #ifndef AULA0401
 #define AULA0401 "@(#)aula0401.h $Revision: 1.2 $"
 

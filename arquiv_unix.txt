@@ -1,0 +1,4 @@
+Este é um arquivo 
+de testes no formato
+Unix, que devera ser
+convertido para formato Dos

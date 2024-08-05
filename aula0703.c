@@ -17,6 +17,15 @@
 
 
 
+#if defined (__FreeBSD__) && defined (__STRICT_ANSI__)
+#define _XOPEN_SOURCE 700
+#endif
+
+#ifdef __linux__
+#define _XOPEN_SOURCE 600
+#endif
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>

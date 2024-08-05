@@ -1,0 +1,6 @@
+este e um arquivo de teste.
+Contem varias linhas de texto.
+Usado para testar a funcao ExibirConteudoArquivo.
+1234567890
+!@#$%^&*()_+
+

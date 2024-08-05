@@ -1,10 +1,15 @@
-head	1.14;
+head	1.15;
 access;
 symbols;
 locks
-	gabriel.depaula:1.14; strict;
+	gabriel.depaula:1.15; strict;
 comment	@# @;
 
+
+1.15
+date	2024.07.26.18.08.21;	author gabriel.depaula;	state Exp;
+branches;
+next	1.14;
 
 1.14
 date	2024.06.07.18.54.32;	author gabriel.depaula;	state Exp;
@@ -81,9 +86,9 @@ desc
 @@
 
 
-1.14
+1.15
 log
-@corrigidos erros que nao permitiam a correta geraçcao das aulas
+@*** empty log message ***
 @
 text
 @# Universidade Federal do Rio de Janeiro
@@ -97,6 +102,9 @@ text
 # $Author: gabriel.depaula $
 # $Dates$
 # $Log: GNUmakefile,v $
+# Revision 1.14  2024/06/07 18:54:32  gabriel.depaula
+# corrigidos erros que nao permitiam a correta geraçcao das aulas
+#
 # Revision 1.13  2024/06/07 18:19:13  gabriel.depaula
 # *** empty log message ***
 #
@@ -208,6 +216,8 @@ AULA05 = aula0502 aula0503\
 				 aula0504 aula0505\
 				 aula0506 aula0507
 
+AULA07 = aula0702
+
 LIBMATEMATICARECURSAO = libmatematica-recursao.a
 
 LIBMATEMATICADOWHILE = libmatematica-dowhile.a
@@ -217,6 +227,8 @@ LIBMATEMATICAFOR = libmatematica-for.a
 LIBMATEMATICAWHILE = libmatematica-while.a
 
 LIBMATEMATICA = libmatematica.a
+
+LIBMONITOR = libmonitor.a
 
 # macro dos arquivos objeto "aula0101.o" e "aula0102.o"
 AULA0102OBJS = aula0101.o aula0102.o
@@ -280,6 +292,8 @@ AULA0506OBJS = aula0501.o aula0506.o
 
 AULA0507OBJS = aula0501.o aula0507.o
 
+AULA0702OBJS = aula0701.o aula0702.o
+
 LIBMATEMATICARECURSAOOBJS = aula0201a.o aula0301a.o aula0401a.o aula0403a.o
 
 LIBMATEMATICADOWHILEOBJS = aula0201b.o aula0301b.o aula0401b.o aula0403b.o
@@ -290,8 +304,10 @@ LIBMATEMATICAWHILEOBJS = aula0201d.o aula0301d.o aula0401d.o aula0403d.o
 
 LIBMATEMATICA = aula0501.o
 
+LIBMONITOROBJS = aula0701.o
+
 # macro referente ao conteudo da macro AULA01, que deve armazenar um executavel
-EXECS = $(AULA01) $(AULA02) $(AULA03) $(AULA04) $(AULA05)
+EXECS = $(AULA01) $(AULA02) $(AULA03) $(AULA04) $(AULA05) $(AULA07)
 
 
 # macro vazio para DEBUG
@@ -302,7 +318,7 @@ DEBUG = -DDEPURACAO
 endif
 
 # macro vazia para as bibliotecas
-LIBS = $(LIBMATEMATICARECURSAO) $(LIBMATEMATICADOWHILE) $(LIBMATEMATICAFOR) $(LIBMATEMATICWHILE) $(LIBMATEMATICA)
+LIBS = $(LIBMATEMATICARECURSAO) $(LIBMATEMATICADOWHILE) $(LIBMATEMATICAFOR) $(LIBMATEMATICWHILE) $(LIBMATEMATICA) $(LIBMONITOR)
 
 libs: $(LIBS)
 
@@ -319,6 +335,8 @@ aula02: $(AULA02)
 aula03: $(AULA03)
 aula04: $(AULA04)
 aula05: $(AULA05)
+aula07: $(AULA07)
+
 # rotulo dos executaveis e da biblioteca
 all: $(ALL)
 
@@ -410,8 +428,8 @@ aula0402d: $(AULA0402DOBJS)
 
 
 aula0404a: $(AULA0404AOBJS)
-	$(LD) $(CFLAGS) -o $@@ $(AULA0404AOBJS)
-	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT) -lm -L. -lmatematica-recursao
+	$(LD) $(CFLAGS) -o $@@ $(AULA0404AOBJS) -lm -L. -lmatematica-recursao
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
 
 
 aula0404b: $(AULA0404BOBJS)
@@ -457,6 +475,10 @@ aula0507: $(AULA0507OBJS)
 	$(LD) $(CFLAGS) -o $@@ $(AULA0507OBJS)
 	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
 
+aula0702: $(AULA0702OBJS)
+	 $(LD) $(LFLAGS) -o $@@ $(AULA0702OBJS) -lm -L. -lmonitor
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT)
+
 libmatematica-recursao.a: $(LIBMATEMATICARECURSAOOBJS)
 	ar -r -c $@@ $(LIBMATEMATICARECURSAOOBJS)
 
@@ -471,6 +493,10 @@ libmatematica-while.a: $(LIBMATEMATICAWHILEOBJS)
 
 libmatematica.a : $(LIBMATEMATICAOBJS)
 	ar -r -c $@@ $(LIBMATEMATICAOBJS)
+
+libmonitor.a: $(LIBMONITOROBJS)
+	ar -r -c $@@ $(LIBMONITOROBJS)
+
 
 # executa um dos rotulos abaixo caso necessario
 .PHONY: clean-all clean clean-objs clean-bsd clean-linux clean-gcc clean-clang clean-ansi clean-c89 clean-c90 clean-c99 clean-c11
@@ -501,6 +527,32 @@ clean-c11:
 	rm -f $(ALL) *-c11-* *.core
 # $RCSFile$
 
+@
+
+
+1.14
+log
+@corrigidos erros que nao permitiam a correta geraçcao das aulas
+@
+text
+@d12 3
+d126 2
+d138 2
+d202 2
+d214 2
+d217 1
+a217 1
+EXECS = $(AULA01) $(AULA02) $(AULA03) $(AULA04) $(AULA05)
+d228 1
+a228 1
+LIBS = $(LIBMATEMATICARECURSAO) $(LIBMATEMATICADOWHILE) $(LIBMATEMATICAFOR) $(LIBMATEMATICWHILE) $(LIBMATEMATICA)
+d245 2
+d338 2
+a339 2
+	$(LD) $(CFLAGS) -o $@@ $(AULA0404AOBJS)
+	cp -f $@@ $@@-$(OS)-$(CC)-$(DIALECT) -lm -L. -lmatematica-recursao
+d385 4
+d404 4
 @
 
 

@@ -20,7 +20,7 @@
 #endif
  
 #ifdef __linux__
-#define _XOPEN_SOURCE 500   
+#define _XOPEN_SOURCE 600   
 #endif
 
 
@@ -342,14 +342,14 @@ PreencherPoligono(
     
     unsigned maiorLinha, maiorColuna, menorLinha, menorColuna, linhaAtual, colunaAtual, auxiliar, i, j;
     
-    maiorLinha = linhasVertices[0];
-    maiorColuna = colunasVertices[0];
-    menorLinha = linhasVertices[0];
-    menorColuna = colunasVertices[0];
+    maiorLinha = *(linhasVertices[0]);
+    maiorColuna = *(colunasVertices[0]);
+    menorLinha = *(linhasVertices[0]);
+    menorColuna = *(colunasVertices[0]);
     
     for (auxiliar = 1; auxiliar < numeroVertices; auxiliar++){
-      linhaAtual = linhasVertices[auxiliar];
-      colunaAtual = colunasVertices[auxiliar];
+      linhaAtual = *(linhasVertices[auxiliar]);
+      colunaAtual = *(colunasVertices[auxiliar]);
       
       if (linhaAtual > maiorLinha){
         maiorLinha = linhaAtual;
